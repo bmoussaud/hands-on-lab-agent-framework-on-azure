@@ -5,4 +5,7 @@ resource "azurerm_search_service" "this" {
   sku                           = "basic"
   public_network_access_enabled = true
   tags                          = local.tags
+  identity {
+    type = "SystemAssigned"
+  }
 }
