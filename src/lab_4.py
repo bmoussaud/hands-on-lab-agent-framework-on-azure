@@ -1,7 +1,7 @@
 import asyncio
 import os
 from agent_framework.azure import AzureAIAgentClient
-from agent_framework import ChatAgent, HostedMCPTool, GroupChatBuilder
+from agent_framework import ChatAgent, HostedMCPTool
 from azure.identity.aio import AzureCliCredential
 from dotenv import load_dotenv
 from models.issue_analyzer import IssueAnalyzer
@@ -94,41 +94,12 @@ async def main():
             ),
         ) as ms_learn_agent,
     ):
-        # github_result = await github_agent.run(
-        #     "Create an issue on hands-on-lab-agent-framework-on-azure repo about adding a new feature to support Azure Functions."
-        # )
-        # print(github_result.text)
-
-        # result = await issue_analyzer_agent.run("""
-        #             Traceback (most recent call last):
-        #                 File "<string>", line 38, in <module>
-        #                     main_application()                    ← Entry point
-        #                 File "<string>", line 30, in main_application
-        #                     results = process_data_batch(test_data)  ← Calls processor
-        #                 File "<string>", line 13, in process_data_batch
-        #                     avg = calculate_average(batch)        ← Calls calculator
-        #                 File "<string>", line 5, in calculate_average
-        #                     return total / count                  ← ERROR HERE
-        #                         ~~~~~~^~~~~~~
-        #                 ZeroDivisionError: division by zero
-        #                             """)
-        # print(result.text)
-
-        # agent_result = await ms_learn_agent.run(
-        #     "How do I create a virtual machine in Azure?"
-        # )
-        # print(agent_result.text)
-
-        workflow = (
-            GroupChatBuilder()
-            .set_prompt_based_manager(
-                chat_client=AzureAIAgentClient(**settings), display_name="Coordinator"
-            )
-            .participants(github_agent=github_agent, ms_learn_agent=ms_learn_agent)
-            .build()
+        github_result = await github_agent.run(
+            "Create an issue on hands-on-lab-agent-framework-on-azure repo about adding a new feature to support Azure Functions."
         )
+        print(github_result.text)
 
-        task = """
+        result = await issue_analyzer_agent.run("""
                     Traceback (most recent call last):
                         File "<string>", line 38, in <module>
                             main_application()                    ← Entry point
@@ -140,24 +111,13 @@ async def main():
                             return total / count                  ← ERROR HERE
                                 ~~~~~~^~~~~~~
                         ZeroDivisionError: division by zero
-                                    """
+                                    """)
+        print(result.text)
 
-        print("\nStarting Group Chat Workflow...\n")
-        print(f"Input: {task}\n")
-
-        try:
-            workflow_agent = workflow.as_agent(name="GroupChatWorkflowAgent")
-            agent_result = await workflow_agent.run(task)
-
-            if agent_result.messages:
-                print("\n===== as_agent() Transcript =====")
-                for i, msg in enumerate(agent_result.messages, start=1):
-                    role_value = getattr(msg.role, "value", msg.role)
-                    speaker = msg.author_name or role_value
-                    print(f"{'-' * 50}\n{i:02d} [{speaker}]\n{msg.text}")
-
-        except Exception as e:
-            print(f"Workflow execution failed: {e}")
+        agent_result = await ms_learn_agent.run(
+            "How do I create a virtual machine in Azure?"
+        )
+        print(agent_result.text)
 
 
 if __name__ == "__main__":

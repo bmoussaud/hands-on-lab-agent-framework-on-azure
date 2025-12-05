@@ -14,7 +14,7 @@ resource "azapi_resource" "chat_model_deployment" {
       raiPolicyName = "Microsoft.DefaultV2"
     }
     sku = {
-      capacity = 50
+      capacity = 100
       name     = "GlobalStandard"
     }
   }
