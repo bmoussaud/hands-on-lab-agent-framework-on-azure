@@ -728,6 +728,7 @@ Some samples of workflows are also available in the GitHub repository:
 - https://github.com/microsoft/agent-framework/tree/main/python/samples/getting_started/workflows
 
 </details>
+
 ---
 
 ## Add your own knowledge base with RAG
@@ -854,6 +855,7 @@ If you want to go deeper into observability with the Agent Framework, you can fo
 
 
 </details>
+
 ---
 
 # Closing the workshop
@@ -876,6 +878,7 @@ If you have finished you gained a GG from our mascott !
 
 
 </details>
+
 ---
 
 # Takeaways
