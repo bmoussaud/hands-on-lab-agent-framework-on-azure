@@ -624,7 +624,7 @@ uv run python main.py
 
 Select the group chat workflow agent in the Dev UI and ask your first question:
 
-![group-orchestration-workflow](./assets/group-orchestration-workflow.png)
+[![group-orchestration-workflow](./assets/group-orchestration-workflow.png)](./assets/group-orchestration-workflow.png)
 
 You can now interact with the group chat workflow. The manager agent will route your requests to the appropriate agent based on the prompt.
 
@@ -808,7 +808,7 @@ If you click on **View Traces with Agent Runs** you will be able to see the trac
 
 You will be able to see the full trace of the agent run, like tool calls, and any errors that might have occurred:
 
-![application-insights-transaction](./assets/application-insights-transaction.png)
+[![application-insights-transaction](./assets/application-insights-transaction.png)](./assets/application-insights-transaction.png)
 
 > The final `main.py` file can be found in `solutions/lab_8.py`.
 
@@ -824,3 +824,15 @@ To do so, click on `delete resource group` in the Azure Portal to delete all the
 # Delete the resource group with all the resources
 az group delete --name <resource-group>
 ```
+
+---
+
+# Takeaways
+
+Congratulations! You have successfully completed this hands-on lab on building agentic applications on Azure using Microsoft Foundry and the Agent Framework SDK. To explore more advanced Agent Framework capabilities, consider checking out the following resources:
+
+**Additional Resources:**
+- [Get Started with Agent Framework](https://aka.ms/AgentFramework)
+- [Agent Framework Documentation](https://aka.ms/AgentFramework/Docs)
+- [Announcement Blog](https://aka.ms/AgentFramework/PuPr)
+- [Watch Sessions On-Demand](https://aka.ms/AgentFramework/AIShow)
