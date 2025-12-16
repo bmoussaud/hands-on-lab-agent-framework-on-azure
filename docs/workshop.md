@@ -818,7 +818,7 @@ As you can see, you create a group chat workflow with the IssueAnalyzerAgent and
 Now, update the Dev UI setup to add the group chat workflow instead of the individual agents:
 
 ```python
-serve(entities=[issue_analyzer_agent, github_agent, group_workflow], port=8090, auto_open=True, tracing_enabled=True)
+serve(entities=[issue_analyzer_agent, github_agent, group_workflow_agent], port=8090, auto_open=True, tracing_enabled=True)
 ```
 
 Now, run your agent again:
@@ -1084,6 +1084,7 @@ Congratulations! You have successfully completed this hands-on lab on building a
 - [MCP for Beginners (GitHub)](https://github.com/microsoft/mcp-for-beginners/)
 
 - [MCP overview video (YouTube)](https://www.youtube.com/watch?v=VfZlglOWWZw&t=3s)
+
 
 
 
